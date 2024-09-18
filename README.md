@@ -58,3 +58,9 @@
 - Quando precisamos utilizar algo que ira mudar no futuro, optamos por utilizar a interface;
 - Com type alias, nao e possivel realizar uma alteracao, pois se comporta como uma `const`;
 - Interface é a mais utilizada hoje em dia;
+
+#### Narrowing
+
+- E um recurso de TS para identificar tipos de dados;
+- Dando assim uma direcao diferente a execucao do programa, baseada no tipo que foi identificado;
+- Isso e fundamental para evitar erros do compilador, identificando e resolvendo os possiveis erros na hora do desenvolvimento;
