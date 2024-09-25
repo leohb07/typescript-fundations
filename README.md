@@ -64,3 +64,18 @@
 - E um recurso de TS para identificar tipos de dados;
 - Dando assim uma direcao diferente a execucao do programa, baseada no tipo que foi identificado;
 - Isso e fundamental para evitar erros do compilador, identificando e resolvendo os possiveis erros na hora do desenvolvimento;
+
+#### Object Types
+
+- Sao dados que tem como o tipo de objeto, por exemplo: object literals e arrays;
+- Como: interfaces, readonly, tupla e outros;
+
+#### Readonly
+
+- As propriedades readonly podem ser alteradas apenas uma vez, na criacao do novo dado;
+- E uma forma de criar um valor constante em um objeto;
+
+#### Index Signature
+
+- Utilizamos o Signature quando nao sabemos o nome das chaves, mas ja sabemos quais os tipos de um objeto ou array;
+- Isso restringe a tipos que nao devem ser utilizados;
