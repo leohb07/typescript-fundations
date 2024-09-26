@@ -56,3 +56,10 @@ myArray = myArray.map(function (name) { return "Meu nome \u00E9: ".concat(name);
 console.log(myArray);
 var user = ["Leonardo", 23];
 console.log(user);
+// 9 - tuplas readonly
+function showArray(number) {
+    // number[0] = "Leonardo";
+    console.log(number[0]);
+    console.log(number[1]);
+}
+showArray(["Leonardo", 23]);
