@@ -1,134 +1,134 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+"use strict";
 // 1 - fields in class
-var People = /** @class */ (function () {
-    function People() {
-    }
-    return People;
-}());
-var man = new People();
+class People {
+}
+const man = new People();
 man.name = "Leonardo";
 man.age = 23;
 console.log(man);
 // 2 - constructor
-var NewUser = /** @class */ (function () {
-    function NewUser(name, age) {
+class NewUser {
+    constructor(name, age) {
         this.name = name;
         this.age = age;
     }
-    return NewUser;
-}());
-var human = new NewUser("Leonardo", 23);
+}
+const human = new NewUser("Leonardo", 23);
 // 3 - readonly field
-var Car = /** @class */ (function () {
-    function Car(name) {
+class Car {
+    constructor(name) {
         this.wheels = 4;
         this.name = name;
     }
-    return Car;
-}());
-var chevrolet = new Car("Cruze");
+}
+const chevrolet = new Car("Cruze");
 console.log(chevrolet.name);
 console.log(chevrolet.wheels);
 // 4 - inheritance and super
-var Animal = /** @class */ (function () {
-    function Animal(type, weight) {
+class Animal {
+    constructor(type, weight) {
         this.type = type;
         this.weight = weight;
     }
-    return Animal;
-}());
-var Dog = /** @class */ (function (_super) {
-    __extends(Dog, _super);
-    function Dog(color, weight) {
-        var _this = _super.call(this, "dog", weight) || this; // this super, send props to constructor of Animal class
-        _this.color = color;
-        return _this;
+}
+class Dog extends Animal {
+    constructor(color, weight) {
+        super("dog", weight); // this super, send props to constructor of Animal class
+        this.color = color;
     }
-    return Dog;
-}(Animal));
+}
 // 5 - method
-var Npc = /** @class */ (function () {
-    function Npc(name) {
+class Npc {
+    constructor(name) {
         this.name = name;
     }
-    Npc.prototype.greeting = function () {
+    greeting() {
         console.log("Hello, Wizard!");
-    };
-    return Npc;
-}());
-var berserker = new Npc("Ares");
+    }
+}
+const berserker = new Npc("Ares");
 berserker.greeting();
 // 6 - this in classes
-var UseThis = /** @class */ (function () {
-    function UseThis(whatThis) {
+class UseThis {
+    constructor(whatThis) {
         this.whatThis = whatThis;
     }
-    UseThis.prototype.usingThis = function () {
-        console.log("I using \"this\" in console.log to show the prop whatThis => ".concat(this.whatThis));
-    };
-    return UseThis;
-}());
-var usingThisNow = new UseThis("Test");
+    usingThis() {
+        console.log(`I using "this" in console.log to show the prop whatThis => ${this.whatThis}`);
+    }
+}
+const usingThisNow = new UseThis("Test");
 usingThisNow.usingThis();
 // 7 - using get in class
-var Person = /** @class */ (function () {
-    function Person(firstName, lastName) {
+class Person {
+    constructor(firstName, lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-    Object.defineProperty(Person.prototype, "fullName", {
-        get: function () {
-            return "".concat(this.firstName, " ").concat(this.lastName);
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return Person;
-}());
-var iam = new Person("Leonardo", "Barrocal");
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+const iam = new Person("Leonardo", "Barrocal");
 console.log(iam.fullName); // no required invoke a get function
 // 8 - using set in class
-var Coords = /** @class */ (function () {
-    function Coords() {
+class Coords {
+    set fillLatitude(latitude) {
+        if (latitude <= 0) {
+            return;
+        }
+        this.latitude = latitude;
     }
-    Object.defineProperty(Coords.prototype, "fillLatitude", {
-        set: function (latitude) {
-            if (latitude <= 0) {
-                return;
-            }
-            this.latitude = latitude;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Coords.prototype, "fillLongitude", {
-        set: function (longitude) {
-            if (longitude <= 0) {
-                return;
-            }
-            this.longitude = longitude;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    return Coords;
-}());
-var myCoords = new Coords();
+    set fillLongitude(longitude) {
+        if (longitude <= 0) {
+            return;
+        }
+        this.longitude = longitude;
+    }
+}
+const myCoords = new Coords();
 console.log(myCoords);
 myCoords.fillLatitude = 121312;
 myCoords.fillLongitude = 6122371;
 console.log(myCoords);
+class User {
+    showUser(name) {
+        return name;
+    }
+}
+// 10 - using overrides
+class Base {
+    constructor(baseName) {
+        this.baseName = baseName;
+    }
+    callbackToShowMessage() {
+        return `This is callback - ${this.baseName}`;
+    }
+}
+class SuperBase extends Base {
+    constructor() {
+        super("override");
+    }
+    callbackToShowMessage() {
+        // override function
+        return `Used override!`;
+    }
+}
+const mySuperBase = new SuperBase();
+console.log(mySuperBase.callbackToShowMessage());
+// 11 - using protected
+class Protect {
+    constructor(name) {
+        this.name = name;
+    }
+}
+class SuperProtect extends Protect {
+    constructor() {
+        super("Leonardo");
+    }
+    showName() {
+        console.log("protected: ", this.name);
+    }
+}
+const mySuperProtect = new SuperProtect();
+mySuperProtect.showName();

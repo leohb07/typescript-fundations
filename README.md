@@ -79,3 +79,10 @@
 
 - Utilizamos o Signature quando nao sabemos o nome das chaves, mas ja sabemos quais os tipos de um objeto ou array;
 - Isso restringe a tipos que nao devem ser utilizados;
+
+#### Visibilidade
+
+- E o conceito de expor nossos metodos de classes
+- public: visibilidade default, pode ser acessado em qualquer local
+- protected: acessivel apenas a subclass da class do metodo, para acessar uma propriedade precisamos de um metodo;
+- private: apenas a classe que declarou o metodo pode utilizar

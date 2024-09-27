@@ -116,7 +116,7 @@ console.log(iam.fullName); // no required invoke a get function
 
 // 8 - using set in class
 class Coords {
-  // using `!` to tells typescript that use this field later
+  // using `!` to tells typescript that we will use this field later
   latitude!: number;
   longitude!: number;
 
@@ -156,3 +156,54 @@ class User implements UsersRepository {
     return name;
   }
 }
+
+// 10 - using overrides
+class Base {
+  baseName: string;
+
+  constructor(baseName: string) {
+    this.baseName = baseName;
+  }
+
+  callbackToShowMessage() {
+    return `This is callback - ${this.baseName}`;
+  }
+}
+
+class SuperBase extends Base {
+  constructor() {
+    super("override");
+  }
+
+  callbackToShowMessage(): string {
+    // override function
+    return `Used override!`;
+  }
+}
+
+const mySuperBase = new SuperBase();
+
+console.log(mySuperBase.callbackToShowMessage());
+
+// 11 - using protected
+class Protect {
+  protected name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+class SuperProtect extends Protect {
+  constructor() {
+    super("Leonardo");
+  }
+
+  showName() {
+    console.log("protected: ", this.name);
+  }
+}
+
+const mySuperProtect = new SuperProtect();
+
+mySuperProtect.showName();
