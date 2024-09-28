@@ -207,3 +207,92 @@ class SuperProtect extends Protect {
 const mySuperProtect = new SuperProtect();
 
 mySuperProtect.showName();
+
+// 12 - private
+class PrivateClass {
+  private name: string = "Private";
+
+  showName(): string {
+    return this.name;
+  }
+}
+
+const myPrivateClass = new PrivateClass();
+
+console.log(myPrivateClass.showName());
+// console.log(myPrivateClass.name);
+
+// 13 - static members
+class StaticMembers {
+  static prop = "Test static";
+
+  static staticMethod() {
+    console.log("This is a static method");
+  }
+}
+
+// When use static method, we don't require create an instance of class.
+console.log(StaticMembers.prop);
+StaticMembers.staticMethod();
+
+// 14 - generic class
+class Item<T, U> {
+  public first: T;
+  public second: U;
+
+  constructor(first: T, second: U) {
+    this.first = first;
+    this.second = second;
+  }
+}
+
+// 15 - parameters properties
+class ParametersProperties {
+  constructor(
+    public name: string,
+    private quantity: number,
+    private price: number
+  ) {
+    this.name = name;
+    this.price = price;
+    this.quantity = quantity;
+  }
+
+  get showQuantity() {
+    return this.quantity;
+  }
+
+  get showPrice() {
+    return this.price;
+  }
+}
+
+const myShirt = new ParametersProperties("Shirt", 10, 20.9);
+
+console.log(myShirt.name);
+console.log(myShirt.showPrice);
+console.log(myShirt.showQuantity);
+
+// 16 - abstract class
+abstract class AbstractClass {
+  abstract showName(): void;
+}
+
+class AbstractExample implements AbstractClass {
+  showName(): void {
+    throw new Error("Method not implemented.");
+  }
+}
+
+class AbstractExampleTwo extends AbstractClass {
+  public name: string;
+
+  constructor(name: string) {
+    super(); // this is required, when extend other class
+    this.name = name;
+  }
+
+  showName(): void {
+    throw new Error("Method not implemented.");
+  }
+}
