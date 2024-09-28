@@ -86,3 +86,10 @@
 - public: visibilidade default, pode ser acessado em qualquer local
 - protected: acessivel apenas a subclass da class do metodo, para acessar uma propriedade precisamos de um metodo;
 - private: apenas a classe que declarou o metodo pode utilizar
+
+#### Decorators
+
+- Podem adicionar funcionalidades extras a classes e funcoes;
+- Basicamente criamos novas funcoes, que sao adicionadas a partir de um @nome
+- Esta funcao sera chamada assim que o item que foi definido o decorator for executado;
+- Necessario configurar o tsconfig.json
